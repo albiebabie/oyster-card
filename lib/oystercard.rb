@@ -1,11 +1,10 @@
 
 require_relative 'station'
-
+require_relative 'journey'
 class Oystercard
 
   LIMIT = 90
   MIN_BALANCE = 1
-  MIN_FARE = 1
 
   attr_accessor :balance, :entry_station, :exit_station, :journey_history, :journey
 
@@ -14,7 +13,7 @@ class Oystercard
     @balance = 0
     @entry_station = nil
     @journey_history = []
-    @journey = {}
+    @journey = Journey.new
   end
 
   def journey(entry_station, exit_station)
@@ -32,12 +31,8 @@ class Oystercard
     @entry_station = station
   end
 
-  def touch_out(station)
-    deduct(MIN_FARE)
-    @exit_station = station
-    journey(@entry_station, @exit_station)
-    @journey_history << @journey
-    @entry_station = nil
+  def touch_out
+    deduct(journey.fare)
   end
 
   def in_journey?

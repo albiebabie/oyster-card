@@ -72,11 +72,11 @@ describe Oystercard do
         end
       end
 
-      it "Knows we're not in_journey after we touch_out" do
-        subject.touch_in(station)
-        subject.touch_out(station)
-        expect(subject).to_not be_in_journey
-      end
+      # it "Knows we're not in_journey after we touch_out" do
+      #   subject.touch_in(station)
+      #   subject.touch_out(station)
+      #   expect(subject).to_not be_in_journey
+      # end
       it "Stores journeys in journey history" do
         subject.touch_in(station)
         subject.touch_out(station)
