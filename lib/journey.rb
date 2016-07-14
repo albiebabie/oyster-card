@@ -3,10 +3,11 @@ class Journey
 MINIMUM_FARE = 1
 PENALTY_FARE = 6
 
-  attr_reader :journey
+  attr_reader :journey, :journey_history
 
   def initialize
     @journey = {}
+    @journey_history = []
   end
 
   def start_journey(entry_station)
@@ -17,6 +18,7 @@ PENALTY_FARE = 6
   def end_journey(exit_station)
     @in_journey = false
     @journey[:end] = exit_station
+    @journey_history << @journey.clone
   end
 
   def in_journey?
