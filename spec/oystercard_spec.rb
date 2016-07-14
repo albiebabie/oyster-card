@@ -1,3 +1,4 @@
+
 require "oystercard"
 
 describe Oystercard do
@@ -89,6 +90,7 @@ describe Oystercard do
   it "Raises an error when balance is insufficient" do
     error = 'Insufficient balance'
     expect{ subject.touch_in(station) }.to raise_error error
+
   end
 
 end

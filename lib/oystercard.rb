@@ -1,3 +1,4 @@
+
 require_relative 'station'
 
 class Oystercard
@@ -48,4 +49,5 @@ class Oystercard
   def deduct(amount)
     @balance -= amount
   end
+
 end
