@@ -16,9 +16,10 @@ class Journey
   end
 
   def end_journey exit_station
+    # require 'pry'; binding.pry
     @journey[:exit] = exit_station
     @history << @journey.clone
-    @complete = @journey[:enter] && @journey[:exit]
+    @complete = !@journey[:enter].nil? && !@journey[:exit].nil?
     @journey[:enter] = nil
   end
 
