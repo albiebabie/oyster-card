@@ -8,28 +8,27 @@ class Oystercard
 
   attr_accessor :balance, :entry_station, :exit_station, :journey_history, :journey
 
+
   def initialize
     @balance = 0
-    #@in_journey = false
     @entry_station = nil
     @journey_history = []
     @journey = {}
   end
 
   def journey(entry_station, exit_station)
-    @journey = {entry_station: entry_station, exit_station: exit_station}
+    @journey = { entry_station: entry_station, exit_station: exit_station }
   end
 
   def top_up(amount)
     error = "Top up would exceed card limit of £#{LIMIT}"
-    fail error if (amount + @balance) > LIMIT
+    raise error if (amount + @balance) > LIMIT
     @balance += amount
   end
 
   def touch_in(station)
-    fail "Insufficient balance" unless @balance >= MIN_BALANCE
+    raise 'Insufficient balance' unless @balance >= MIN_BALANCE
     @entry_station = station
-    @exit_station = nil
   end
 
   def touch_out(station)
@@ -41,13 +40,12 @@ class Oystercard
   end
 
   def in_journey?
-    !!@entry_station
+    @entry_station
   end
 
-private
+  private
 
   def deduct(amount)
     @balance -= amount
   end
-
 end
