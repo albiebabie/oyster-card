@@ -36,11 +36,6 @@ describe Oystercard do
       subject.touch_out(exit_station)
       expect{ subject.touch_in(entry_station) }.to raise_error "you need at least £1 to travel"
     end
-
-    it "should record entry_station" do
-      expect(subject).to respond_to(:touch_in).with(1).argument
-      expect(subject.entry_station).to eq entry_station
-    end
   end
 
   it "should deduct minimum fare when touching out" do
@@ -63,10 +58,6 @@ describe Oystercard do
 
     it "should forget entry_station station on touch_out" do
       expect(subject.entry_station).to be_nil
-    end
-
-    it "should record exit_station" do
-      expect(subject.exit_station).to eq exit_station
     end
   end
 

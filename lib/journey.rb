@@ -7,6 +7,7 @@ class Journey
   def initialize
     @in_journey = false
     @entry_station = nil
+    @journey = []
   end
 
   def start_a_journey(entry_station)
@@ -23,6 +24,9 @@ class Journey
     @exit_station = exit_station
   end
 
+  def journey_saver
+    @journey << { entry_station: @entry_station, exit_station: @exit_station }
+  end
   def fare
     MINIMUM_FARE
   end

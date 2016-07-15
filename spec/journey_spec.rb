@@ -22,20 +22,29 @@ describe Journey do
   end
 
   describe "#end_a_journey" do
-    it "user can end_a_journey" do
-      expect(subject).to respond_to(:end_a_journey).with(1).argument
-    end
-
-    it "in_journey should be false if user has ended a journey" do
+      it "should change in_journey to false" do
       subject.start_a_journey(entry_station)
       subject.end_a_journey(exit_station)
-      expect(subject).to_not be_in_journey
+      expect(subject).not_to be_in_journey
+    end
+  end
+
+  describe "#journey_saver" do
+
+    let(:journey){ {entry_station: entry_station, exit_station: exit_station } }
+
+    it "can be saved" do
+      expect(subject).to respond_to(:journey_saver)
     end
 
-    #it "should record exit_station" do
-      #subject.start_journey(entry_station)
-      #expect(subject.exit_station).to eq exit_station
-    #end
+    it "should create a hash of a completed journey" do
+      subject.start_a_journey(entry_station)
+      subject.end_a_journey(exit_station)
+      expect(subject.journey_saver).to include journey
+    end
+
+
+
   end
 
   # describe "#fare" do
