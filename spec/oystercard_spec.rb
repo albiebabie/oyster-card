@@ -5,9 +5,9 @@ max_balance = Oystercard::MAX_BALANCE
 min_balance = Oystercard::MIN_BALANCE
 
 describe Oystercard do
-let(:entry_station) { double :entry_station }
-let(:exit_station) { double :exit_station }
 
+  let(:entry_station) { double :entry_station }
+  let(:exit_station) { double :exit_station }
 
   context "#balance" do
     it 'new oystercard has a balance of 0' do
@@ -85,4 +85,6 @@ let(:exit_station) { double :exit_station }
       expect(subject.journeys).to include journey
     end
   end
+
+
 end

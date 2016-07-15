@@ -1,14 +1,14 @@
-#require 'oystercard'
+require 'oystercard'
 
 class Journey
 
-  attr_reader :entry_station
+  MINIMUM_FARE = 1
 
   def initialize
     @in_journey = false
   end
 
-  def start_a_journey
+  def start_a_journey(entry_station)
     @in_journey = true
   end
 
@@ -19,4 +19,9 @@ class Journey
   def end_a_journey
     @in_journey = false
   end
+
+  def fare
+    MINIMUM_FARE
+  end
+
 end
