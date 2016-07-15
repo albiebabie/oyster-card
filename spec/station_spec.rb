@@ -1,13 +1,14 @@
 require 'station'
-describe 'Station' do
 
-subject { Station.new(name: "Old Street", zone: 1) }
+describe Station do
 
-    it "responds to name" do
-      expect(subject.name).to eq "Old Street"
-    end
+  let(:subject) { described_class.new("Old Street", 1) }
 
-    it "responds to zone" do
-      expect(subject.zone).to eq 1
-    end
+  it "responds to name" do
+    expect(subject.name).to eq "Old Street"
+  end
+
+  it "responds to zone" do
+    expect(subject.zone).to eq 1
+  end
 end
