@@ -23,23 +23,11 @@ let(:exit_station) { double :exit_station }
     end
   end
 
-
-  context "#in_journey" do
-    it "should know if status is in_journey" do
-      expect(subject).to respond_to(:in_journey?)
-      expect(subject.in_journey?).to be_falsey
-    end
-  end
-
   context "#touch_in" do
 
     before :each do
       subject.top_up(min_balance)
       subject.touch_in(entry_station)
-    end
-
-    it "should allow a user to touch_in" do
-      expect(subject).to be_in_journey
     end
 
     it "should prevent travelling when balance is below £1" do
@@ -67,7 +55,7 @@ let(:exit_station) { double :exit_station }
       subject.touch_out(exit_station)
     end
 
-    it "should allow a user to touch_out" do
+    xit "should allow a user to touch_out" do
       expect(subject).to_not be_in_journey
     end
 
