@@ -1,4 +1,4 @@
-require 'oystercard'
+require_relative 'oystercard'
 
 class Journey
 
@@ -6,18 +6,21 @@ class Journey
 
   def initialize
     @in_journey = false
+    @entry_station = nil
   end
 
   def start_a_journey(entry_station)
     @in_journey = true
+    @entry_station = entry_station
   end
 
   def in_journey?
     @in_journey
   end
 
-  def end_a_journey
+  def end_a_journey(exit_station)
     @in_journey = false
+    @exit_station = exit_station
   end
 
   def fare

@@ -10,6 +10,11 @@ describe Journey do
     it "user can start_a_journey" do
       expect(subject).to respond_to(:start_a_journey).with(1).argument
     end
+
+    it "should update entry_station" do
+      expect(subject.start_a_journey(entry_station)).to eq entry_station
+    end
+
     it "in_journey should be true if user has started a journey" do
       subject.start_a_journey(entry_station)
       expect(subject).to be_in_journey
@@ -18,13 +23,19 @@ describe Journey do
 
   describe "#end_a_journey" do
     it "user can end_a_journey" do
-      expect(subject).to respond_to :end_a_journey
+      expect(subject).to respond_to(:end_a_journey).with(1).argument
     end
+
     it "in_journey should be false if user has ended a journey" do
       subject.start_a_journey(entry_station)
-      subject.end_a_journey
+      subject.end_a_journey(exit_station)
       expect(subject).to_not be_in_journey
     end
+
+    #it "should record exit_station" do
+      #subject.start_journey(entry_station)
+      #expect(subject.exit_station).to eq exit_station
+    #end
   end
 
   # describe "#fare" do
